@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navigation Bar with Content</title>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <table width="100%" border="1">
+            <tr>
+                <td><a href="#" onclick="showContent('home')">Home</a></td>
+                <td><a href="#" onclick="showContent('signup')">Signup</a></td>
+                <td><a href="#" onclick="showContent('login')">Login</a></td>
+                <td>
+                    <form onsubmit="searchContent(); return false;">
+                        <input type="text" id="searchQuery" placeholder="Search...">
+                        <input type="submit" value="Search">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </nav>
+
+    <!-- Content Sections -->
+    <div id="content">
+        <h2>Welcome to My Website</h2>
+        <p>Click on the navigation links to see more information.</p>
+    </div>
+
+    <script>
+        function showContent(section) {
+            let content = document.getElementById('content');
+            if (section === 'home') {
+                content.innerHTML = "<h2>Home</h2><p>Welcome to the home page of our website.</p>";
+            } else if (section === 'signup') {
+                content.innerHTML = "<h2>Signup</h2><p>Register a new account to access exclusive features.</p>";
+            } else if (section === 'login') {
+                content.innerHTML = "<h2>Login</h2><p>Enter your credentials to log in.</p>";
+            }
+        }
+
+        function searchContent() {
+            let query = document.getElementById('searchQuery').value;
+            let content = document.getElementById('content');
+            if (query.trim() !== "") {
+                content.innerHTML = "<h2>Search Results</h2><p>You searched for: <strong>" + query + "</strong></p>";
+            } else {
+                content.innerHTML = "<h2>Search</h2><p>Please enter a search term.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>
